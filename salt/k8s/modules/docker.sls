@@ -15,7 +15,7 @@ docker-install:
     - mode: 644
   pkg.installed:
     - name: docker-ce
-    - version: 1:19.03.13-3.el8
+    - version: 3:19.03.13-3.el8
       
 docker-cli-install:
   pkg.installed:
