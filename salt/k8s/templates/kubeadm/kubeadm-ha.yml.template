@@ -20,6 +20,12 @@ nodeRegistration:
 ---
 apiServer:
   timeoutForControlPlane: 4m0s
+  extraArgs:
+    authorization-mode: "Node,RBAC"
+    enable-admission-plugins: "NamespaceLifecycle,LimitRanger,ServiceAccount,PersistentVolumeClaimResize,DefaultStorageClass,DefaultTolerationSeconds,NodeRestriction,MutatingAdmissionWebhook,ValidatingAdmissionWebhook,ResourceQuota,Priority,PodPreset"
+    runtime-config: api/all=true,settings.k8s.io/v1alpha1=true
+    storage-backend: etcd3
+    etcd-servers: http://192.168.100.22:2379,http://192.168.100.23:2379,http://192.168.100.24:2379
 apiVersion: kubeadm.k8s.io/v1beta2
 certificatesDir: /etc/kubernetes/pki
 clusterName: kubernetes
@@ -28,8 +34,13 @@ controllerManager: {}
 dns:
   type: CoreDNS
 etcd:
-  local:
-    dataDir: /var/lib/etcd
+  #local:
+  #  dataDir: /var/lib/etcd
+  external:
+    endpoints:
+      - http://192.168.100.22:2379
+      - http://192.168.100.23:2379
+      - http://192.168.100.24:2379
 imageRepository: registry.aliyuncs.com/google_containers
 kind: ClusterConfiguration
 kubernetesVersion: v{{ K8S_VERSION }}
