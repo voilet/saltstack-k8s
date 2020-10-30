@@ -27,8 +27,13 @@ controllerManager: {}
 dns:
   type: CoreDNS
 etcd:
-  local:
-    dataDir: /var/lib/etcd
+  #local:
+  #  dataDir: /var/lib/etcd
+  external:
+    endpoints:
+      - http://192.168.100.22:2379
+      - http://192.168.100.23:2379
+      - http://192.168.100.24:2379
 imageRepository: registry.aliyuncs.com/google_containers
 kind: ClusterConfiguration
 kubernetesVersion: v{{ K8S_VERSION }}
