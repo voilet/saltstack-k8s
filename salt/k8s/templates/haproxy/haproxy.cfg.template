@@ -36,5 +36,5 @@ frontend frontend-kube-apiserver
 backend backend-kube-apiserver
     balance source
     mode tcp
-    server linux-node1  192.168.56.11:6443 check inter 2000 rise 30 fall 15
-    server linux-node2  192.168.56.12:6443 check inter 2000 rise 30 fall 15
+    server linux-node1  192.168.100.22:6443 check inter 2000 rise 30 fall 15
+    server linux-node2  192.168.100.23:6443 check inter 2000 rise 30 fall 15
