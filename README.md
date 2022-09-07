@@ -245,6 +245,10 @@ Total run time:  733.939 s
 [root@linux-node1 ~]# kubeadm init --config /etc/sysconfig/kubeadm.yml --ignore-preflight-errors=NumCPU 
 ```
 > 需要下载Kubernetes所有应用服务镜像，根据网络情况，时间可能较长，请等待。可以在新窗口，docker images查看下载镜像进度。
+> 如需重置输入以下指令
+```
+kubeadm reset
+```
 
 2. 多Master初始化
 
